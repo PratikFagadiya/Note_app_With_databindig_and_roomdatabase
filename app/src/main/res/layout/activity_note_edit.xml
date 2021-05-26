@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
-        android:background="@color/bgColor"
-        tools:context=".activities.NoteEditActivity">
+        android:background="@color/bgColor">
 
         <ImageView
             android:id="@+id/imgBack"
@@ -69,17 +67,17 @@
             app:layout_constraintTop_toBottomOf="@id/imgBack" />
 
         <EditText
-            android:background="@null"
-            app:layout_constraintTop_toBottomOf="@id/etTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:letterSpacing="0.08"
+            android:background="@null"
             android:fontFamily="@font/poppins_regular"
             android:hint="Type something...."
+            android:letterSpacing="0.08"
             android:textColorHint="#929292"
             app:layout_constraintLeft_toLeftOf="@id/imgBack"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -23,5 +23,8 @@ public class NoteEditActivity extends AppCompatActivity {
             activityNoteEditBinding.imgEdit.setVisibility(View.GONE);
             activityNoteEditBinding.txtSave.setVisibility(View.VISIBLE);
         });
+
+        activityNoteEditBinding.imgBack.setOnClickListener(v -> onBackPressed());
     }
+
 }

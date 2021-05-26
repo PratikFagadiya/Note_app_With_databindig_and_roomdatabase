@@ -40,7 +40,7 @@
             android:layout_margin="20dp"
             android:gravity="center"
             android:text="New Note"
-            app:icon="@color/dark_gray"
+            app:icon="@drawable/ic_baseline_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             tools:ignore="ContentDescription" />
