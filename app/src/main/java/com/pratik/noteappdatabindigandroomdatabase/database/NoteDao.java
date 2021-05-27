@@ -15,7 +15,7 @@ import java.util.List;
 @Dao
 public interface NoteDao {
 
-    @Query("SELECT * FROM " + Constant.TABLE_NOTE)
+    @Query("SELECT * FROM " + Constant.TABLE_NAME)
     LiveData<List<Note>> getNoteList();
 
     @Insert

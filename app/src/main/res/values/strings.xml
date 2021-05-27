@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Note App (DataBinding And Room Database)</string>
+    <string name="type_something">Type something....</string>
+    <string name="title">Title</string>
 </resources>

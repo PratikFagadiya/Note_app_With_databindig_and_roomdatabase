@@ -12,7 +12,7 @@ import com.pratik.noteappdatabindigandroomdatabase.utils.Constant;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Note.class}, version = 1, exportSchema = false)
+@Database(entities = Note.class, version = 1, exportSchema = false)
 public abstract class NoteDatabase extends RoomDatabase {
 
     private static final String DATABASE_NAME = Constant.DATABASE_NAME;
