@@ -14,6 +14,6 @@ public class BaseActivity extends com.pratik.commonnhelper.BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        noteRepository = new NoteRepository(getApplication());
+        noteRepository = NoteRepository.getNoteRepository(getApplication());
     }
 }

@@ -39,18 +39,15 @@ public class NoteEditActivity extends BaseActivity {
 
         activityNoteEditBinding.imgBack.setOnClickListener(v -> onBackPressed());
 
-        activityNoteEditBinding.txtSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Note note = new Note();
-                note.setTitle(activityNoteEditBinding.etTitle.getText().toString());
-                note.setNote(activityNoteEditBinding.etNote.getText().toString());
-                noteRepository.insertNote(note);
+        activityNoteEditBinding.txtSave.setOnClickListener(v -> {
+            Note note = new Note();
+            note.setTitle(activityNoteEditBinding.etTitle.getText().toString());
+            note.setNote(activityNoteEditBinding.etNote.getText().toString());
+            noteRepository.insertNote(note);
 
-                Toast.makeText(NoteEditActivity.this, "Note saved successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(NoteEditActivity.this, "Note saved successfully", Toast.LENGTH_SHORT).show();
 
-                finish();
-            }
+            finish();
         });
     }
 

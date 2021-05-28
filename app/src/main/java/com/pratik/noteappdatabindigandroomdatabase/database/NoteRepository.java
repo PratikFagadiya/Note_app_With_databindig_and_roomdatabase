@@ -15,6 +15,14 @@ public class NoteRepository {
 
     private NoteDao noteDao;
     private LiveData<List<Note>> mNotes;
+    private static NoteRepository noteRepository;
+
+    public static NoteRepository getNoteRepository(Application application) {
+        if (noteRepository == null) {
+            noteRepository = new NoteRepository(application);
+        }
+        return noteRepository;
+    }
 
     public NoteRepository(Application application) {
         NoteDatabase noteDatabase = NoteDatabase.getInstance(application);
