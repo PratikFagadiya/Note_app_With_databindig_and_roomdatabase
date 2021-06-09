@@ -14,6 +14,8 @@ public class NoteEditActivity extends BaseActivity {
 
     ActivityNoteEditBinding activityNoteEditBinding;
 
+    Note noteModel;
+
     boolean fromCreation;
 
     @Override
@@ -25,11 +27,20 @@ public class NoteEditActivity extends BaseActivity {
         Bundle extraBundle = getIntent().getExtras();
         if (extraBundle != null) {
             fromCreation = extraBundle.getBoolean("fromCreation");
+
+            if (!fromCreation) {
+                noteModel = (Note) extraBundle.getSerializable("myNoteClass");
+            }
         }
 
         if (fromCreation) {
             activityNoteEditBinding.txtSave.setVisibility(View.VISIBLE);
             activityNoteEditBinding.imgEdit.setVisibility(View.GONE);
+        }
+
+        if (noteModel != null) {
+            activityNoteEditBinding.etTitle.setText(noteModel.getTitle());
+            activityNoteEditBinding.etNote.setText(noteModel.getNote());
         }
 
         activityNoteEditBinding.imgEdit.setOnClickListener(v -> {
@@ -46,7 +57,6 @@ public class NoteEditActivity extends BaseActivity {
             noteRepository.insertNote(note);
 
             Toast.makeText(NoteEditActivity.this, "Note saved successfully", Toast.LENGTH_SHORT).show();
-
             finish();
         });
     }

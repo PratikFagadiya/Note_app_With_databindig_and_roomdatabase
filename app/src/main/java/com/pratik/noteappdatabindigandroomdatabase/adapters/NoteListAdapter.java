@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pratik.noteappdatabindigandroomdatabase.R;
 import com.pratik.noteappdatabindigandroomdatabase.databinding.MainNoteListItemBinding;
+import com.pratik.noteappdatabindigandroomdatabase.interfaces.MainNoteClickListener;
 import com.pratik.noteappdatabindigandroomdatabase.models.Note;
 
 import java.util.ArrayList;
@@ -19,8 +20,11 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
     Context mContext;
     ArrayList<Note> noteArrayList;
 
-    public NoteListAdapter(Context mContext) {
+    MainNoteClickListener mainNoteClickListener;
+
+    public NoteListAdapter(Context mContext, MainNoteClickListener mainNoteClickListener) {
         this.mContext = mContext;
+        this.mainNoteClickListener = mainNoteClickListener;
         noteArrayList = new ArrayList<>();
     }
 
@@ -53,6 +57,8 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
         public ViewHolder(@NonNull MainNoteListItemBinding mainNoteListItemBinding) {
             super(mainNoteListItemBinding.getRoot());
             this.mainNoteListItemBinding = mainNoteListItemBinding;
+
+            this.mainNoteListItemBinding.getRoot().setOnClickListener(v -> mainNoteClickListener.onMainNoteClick(noteArrayList.get(getAdapterPosition())));
         }
     }
 }

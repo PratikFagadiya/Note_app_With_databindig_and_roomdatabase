@@ -3,6 +3,7 @@ package com.pratik.noteappdatabindigandroomdatabase.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.pratik.noteappdatabindigandroomdatabase.R;
 import com.pratik.noteappdatabindigandroomdatabase.adapters.NoteListAdapter;
 import com.pratik.noteappdatabindigandroomdatabase.databinding.ActivityMainBinding;
+import com.pratik.noteappdatabindigandroomdatabase.interfaces.MainNoteClickListener;
 import com.pratik.noteappdatabindigandroomdatabase.models.Note;
 
 import java.util.ArrayList;
@@ -18,8 +20,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements MainNoteClickListener {
 
     ActivityMainBinding activityMainBinding;
 
@@ -35,7 +36,7 @@ public class MainActivity extends BaseActivity {
 
         activityMainBinding.btnAddNote.setOnClickListener(v -> startActivity(new Intent(mContext, NoteEditActivity.class).putExtra("fromCreation", true)));
 
-        noteListAdapter = new NoteListAdapter(mContext);
+        noteListAdapter = new NoteListAdapter(mContext, this);
         activityMainBinding.rvNoteList.setLayoutManager(new LinearLayoutManager(mContext));
         activityMainBinding.rvNoteList.setAdapter(noteListAdapter);
 
@@ -45,5 +46,11 @@ public class MainActivity extends BaseActivity {
             noteArrayList.addAll(notes);
             noteListAdapter.submitNoteList(noteArrayList);
         });
+    }
+
+    @Override
+    public void onMainNoteClick(Note note) {
+//        Toast.makeText(mContext, note.getTitle(), Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(mContext, NoteEditActivity.class).putExtra("fromCreation", false).putExtra("myNoteClass", note));
     }
 }

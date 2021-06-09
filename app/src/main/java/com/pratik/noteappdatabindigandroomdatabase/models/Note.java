@@ -6,8 +6,10 @@ import androidx.room.PrimaryKey;
 
 import com.pratik.noteappdatabindigandroomdatabase.utils.Constant;
 
+import java.io.Serializable;
+
 @Entity(tableName = Constant.TABLE_NAME)
-public class Note {
+public class Note implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
