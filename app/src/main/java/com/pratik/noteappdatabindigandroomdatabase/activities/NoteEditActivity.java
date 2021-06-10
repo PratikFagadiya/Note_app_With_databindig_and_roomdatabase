@@ -36,7 +36,11 @@ public class NoteEditActivity extends BaseActivity {
         if (fromCreation) {
             activityNoteEditBinding.txtSave.setVisibility(View.VISIBLE);
             activityNoteEditBinding.imgEdit.setVisibility(View.GONE);
+        } else {
+            activityNoteEditBinding.txtSave.setVisibility(View.GONE);
+            activityNoteEditBinding.imgEdit.setVisibility(View.VISIBLE);
         }
+
 
         if (noteModel != null) {
             activityNoteEditBinding.etTitle.setText(noteModel.getTitle());
@@ -54,9 +58,16 @@ public class NoteEditActivity extends BaseActivity {
             Note note = new Note();
             note.setTitle(activityNoteEditBinding.etTitle.getText().toString());
             note.setNote(activityNoteEditBinding.etNote.getText().toString());
-            noteRepository.insertNote(note);
 
-            Toast.makeText(NoteEditActivity.this, "Note saved successfully", Toast.LENGTH_SHORT).show();
+            if (fromCreation) {
+                noteRepository.insertNote(note);
+                Toast.makeText(NoteEditActivity.this, "Note saved successfully", Toast.LENGTH_SHORT).show();
+            } else {
+                // FIXME: 10-06-2021 Update not working
+                noteRepository.updateNote(note);
+                Toast.makeText(NoteEditActivity.this, "Note updated successfully", Toast.LENGTH_SHORT).show();
+            }
+
             finish();
         });
     }

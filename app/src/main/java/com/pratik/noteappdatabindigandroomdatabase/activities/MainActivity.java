@@ -50,7 +50,6 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
 
     @Override
     public void onMainNoteClick(Note note) {
-//        Toast.makeText(mContext, note.getTitle(), Toast.LENGTH_SHORT).show();
         startActivity(new Intent(mContext, NoteEditActivity.class).putExtra("fromCreation", false).putExtra("myNoteClass", note));
     }
 }

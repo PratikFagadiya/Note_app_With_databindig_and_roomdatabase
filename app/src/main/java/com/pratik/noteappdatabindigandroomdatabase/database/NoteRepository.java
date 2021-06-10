@@ -38,4 +38,8 @@ public class NoteRepository {
         NoteDatabase.databaseWriteExecutor.execute(() -> noteDao.insertNote(note));
     }
 
+    public void updateNote(Note note) {
+        NoteDatabase.databaseWriteExecutor.execute(() -> noteDao.updateNote(note));
+    }
+
 }
