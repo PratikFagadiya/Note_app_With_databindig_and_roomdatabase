@@ -28,6 +28,7 @@ public class NoteEditActivity extends BaseActivity {
         if (extraBundle != null) {
             fromCreation = extraBundle.getBoolean("fromCreation");
 
+
             if (!fromCreation) {
                 noteModel = (Note) extraBundle.getSerializable("myNoteClass");
             }
