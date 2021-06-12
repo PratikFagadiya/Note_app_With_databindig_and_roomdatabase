@@ -34,6 +34,12 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
 
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         activityMainBinding.btnAddNote.setOnClickListener(v -> startActivity(new Intent(mContext, NoteEditActivity.class).putExtra("fromCreation", true)));
 
         noteListAdapter = new NoteListAdapter(mContext, this);
@@ -46,6 +52,7 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
             noteArrayList.addAll(notes);
             noteListAdapter.submitNoteList(noteArrayList);
         });
+
     }
 
     @Override

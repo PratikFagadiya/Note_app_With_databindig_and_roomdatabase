@@ -1,15 +1,12 @@
 package com.pratik.noteappdatabindigandroomdatabase.database;
 
 import android.app.Application;
-import android.content.ContentValues;
-import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
 import com.pratik.noteappdatabindigandroomdatabase.models.Note;
 
 import java.util.List;
-
 
 public class NoteRepository {
 
@@ -39,7 +36,7 @@ public class NoteRepository {
     }
 
     public void updateNote(Note note) {
-        NoteDatabase.databaseWriteExecutor.execute(() -> noteDao.updateNote(note));
+        new Thread(() -> noteDao.updateNote(note.getNote(), note.getId())).start();
     }
 
 }

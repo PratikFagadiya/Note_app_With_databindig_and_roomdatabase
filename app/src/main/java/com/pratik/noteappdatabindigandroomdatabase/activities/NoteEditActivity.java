@@ -28,7 +28,6 @@ public class NoteEditActivity extends BaseActivity {
         if (extraBundle != null) {
             fromCreation = extraBundle.getBoolean("fromCreation");
 
-
             if (!fromCreation) {
                 noteModel = (Note) extraBundle.getSerializable("myNoteClass");
             }
@@ -56,16 +55,16 @@ public class NoteEditActivity extends BaseActivity {
         activityNoteEditBinding.imgBack.setOnClickListener(v -> onBackPressed());
 
         activityNoteEditBinding.txtSave.setOnClickListener(v -> {
-            Note note = new Note();
-            note.setTitle(activityNoteEditBinding.etTitle.getText().toString());
-            note.setNote(activityNoteEditBinding.etNote.getText().toString());
+            noteModel = new Note();
+            noteModel.setTitle(activityNoteEditBinding.etTitle.getText().toString());
+            noteModel.setNote(activityNoteEditBinding.etNote.getText().toString());
 
             if (fromCreation) {
-                noteRepository.insertNote(note);
+                noteRepository.insertNote(noteModel);
                 Toast.makeText(NoteEditActivity.this, "Note saved successfully", Toast.LENGTH_SHORT).show();
             } else {
                 // FIXME: 10-06-2021 Update not working
-                noteRepository.updateNote(note);
+                noteRepository.updateNote(noteModel);
                 Toast.makeText(NoteEditActivity.this, "Note updated successfully", Toast.LENGTH_SHORT).show();
             }
 
