@@ -2,12 +2,12 @@ package com.pratik.noteappdatabindigandroomdatabase.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.pratik.noteappdatabindigandroomdatabase.R;
 import com.pratik.noteappdatabindigandroomdatabase.adapters.NoteListAdapter;
@@ -16,9 +16,7 @@ import com.pratik.noteappdatabindigandroomdatabase.interfaces.MainNoteClickListe
 import com.pratik.noteappdatabindigandroomdatabase.models.Note;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 public class MainActivity extends BaseActivity implements MainNoteClickListener {
 
@@ -53,9 +51,30 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
             noteListAdapter.submitNoteList(noteArrayList);
         });
 
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+                int position = viewHolder.getAdapterPosition();
+                noteRepository.deleteNote(noteArrayList.get(position));
+                noteArrayList.remove(position);
+                noteListAdapter.notifyItemRemoved(position);
+            }
+        };
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+        itemTouchHelper.attachToRecyclerView(activityMainBinding.rvNoteList);
+
     }
 
+
     @Override
+
     public void onMainNoteClick(Note note) {
         startActivity(new Intent(mContext, NoteEditActivity.class).putExtra("fromCreation", false).putExtra("myNoteClass", note));
     }

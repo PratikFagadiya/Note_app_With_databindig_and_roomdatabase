@@ -2,14 +2,11 @@ package com.pratik.noteappdatabindigandroomdatabase.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pratik.noteappdatabindigandroomdatabase.R;
 import com.pratik.noteappdatabindigandroomdatabase.databinding.MainNoteListItemBinding;
 import com.pratik.noteappdatabindigandroomdatabase.interfaces.MainNoteClickListener;
 import com.pratik.noteappdatabindigandroomdatabase.models.Note;

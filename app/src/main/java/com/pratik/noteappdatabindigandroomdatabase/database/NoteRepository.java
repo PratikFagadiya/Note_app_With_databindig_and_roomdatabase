@@ -10,8 +10,8 @@ import java.util.List;
 
 public class NoteRepository {
 
-    private NoteDao noteDao;
-    private LiveData<List<Note>> mNotes;
+    NoteDao noteDao;
+    LiveData<List<Note>> mNotes;
     private static NoteRepository noteRepository;
 
     public static NoteRepository getNoteRepository(Application application) {
@@ -39,4 +39,7 @@ public class NoteRepository {
         new Thread(() -> noteDao.updateNote(note.getNote(), note.getId())).start();
     }
 
+    public void deleteNote(Note note) {
+        new Thread(() -> noteDao.deleteNote(note)).start();
+    }
 }
