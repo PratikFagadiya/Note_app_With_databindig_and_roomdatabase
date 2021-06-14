@@ -2,6 +2,8 @@ package com.pratik.noteappdatabindigandroomdatabase.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -31,7 +33,6 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
         super.onCreate(savedInstanceState);
 
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
     }
 
     @Override
@@ -64,6 +65,7 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
                 noteRepository.deleteNote(noteArrayList.get(position));
                 noteArrayList.remove(position);
                 noteListAdapter.notifyItemRemoved(position);
+                Toast.makeText(mContext, "Note Deleted", Toast.LENGTH_SHORT).show();
             }
         };
 
