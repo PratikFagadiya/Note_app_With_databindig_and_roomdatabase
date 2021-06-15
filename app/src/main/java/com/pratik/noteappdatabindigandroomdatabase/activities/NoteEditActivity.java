@@ -1,6 +1,8 @@
 package com.pratik.noteappdatabindigandroomdatabase.activities;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
@@ -69,6 +71,50 @@ public class NoteEditActivity extends BaseActivity {
             }
 
             finish();
+        });
+
+        activityNoteEditBinding.etTitle.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!fromCreation) {
+                    if (activityNoteEditBinding.imgEdit.getVisibility() == View.VISIBLE) {
+                        activityNoteEditBinding.imgEdit.setVisibility(View.GONE);
+                        activityNoteEditBinding.txtSave.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        activityNoteEditBinding.etNote.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!fromCreation) {
+                    if (activityNoteEditBinding.imgEdit.getVisibility() == View.VISIBLE) {
+                        activityNoteEditBinding.imgEdit.setVisibility(View.GONE);
+                        activityNoteEditBinding.txtSave.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
         });
     }
 
