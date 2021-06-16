@@ -3,6 +3,7 @@ package com.pratik.noteappdatabindigandroomdatabase.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Toast;
 
@@ -37,31 +38,6 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
 
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        activityMainBinding.btnAddNote.setOnClickListener(v -> {
-
-            //calculates the center of the View v you are passing
-            int revealX = (int) (v.getX() + v.getWidth() / 2);
-            int revealY = (int) (v.getY() + v.getHeight() / 2);
-
-            Intent intent = new Intent(mContext, NoteEditActivity.class);
-            intent.putExtra(RevealAnimation.EXTRA_CIRCULAR_REVEAL_X, revealX);
-            intent.putExtra(RevealAnimation.EXTRA_CIRCULAR_REVEAL_Y, revealY);
-            intent.putExtra("fromCreation", true);
-
-            //just start the activity as an shared transition, but set the options bundle to null
-            ActivityCompat.startActivity(this, intent, null);
-
-            //to prevent strange behaviours override the pending transitions
-            overridePendingTransition(0, 0);
-
-        });
-
         noteListAdapter = new NoteListAdapter(mContext, this);
         activityMainBinding.rvNoteList.setLayoutManager(new LinearLayoutManager(mContext));
         activityMainBinding.rvNoteList.setAdapter(noteListAdapter);
@@ -89,15 +65,48 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
                 Toast.makeText(mContext, "Note Deleted", Toast.LENGTH_SHORT).show();
             }
         };
-
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(activityMainBinding.rvNoteList);
 
+        activityMainBinding.btnAddNote.setOnClickListener(v -> {
+
+            //calculates the center of the View v you are passing
+            int revealX = (int) (v.getX() + v.getWidth() / 2);
+            int revealY = (int) (v.getY() + v.getHeight() / 2);
+
+            Intent intent = new Intent(mContext, NoteEditActivity.class);
+            intent.putExtra(RevealAnimation.EXTRA_CIRCULAR_REVEAL_X, revealX);
+            intent.putExtra(RevealAnimation.EXTRA_CIRCULAR_REVEAL_Y, revealY);
+            intent.putExtra("fromCreation", true);
+
+            //just start the activity as an shared transition, but set the options bundle to null
+            ActivityCompat.startActivity(this, intent, null);
+
+            //to prevent strange behaviours override the pending transitions
+            overridePendingTransition(0, 0);
+
+        });
     }
 
-
     @Override
-    public void onMainNoteClick(Note note) {
-        startActivity(new Intent(mContext, NoteEditActivity.class).putExtra("fromCreation", false).putExtra("myNoteClass", note));
+    public void onMainNoteClick(View itemView,Note note) {
+        //calculates the center of the View v you are passing
+        int revealX = (int) (itemView.getX() + itemView.getWidth() / 2);
+        int revealY = (int) (itemView.getY() + itemView.getHeight() / 2);
+
+        Intent intent = new Intent(mContext, NoteEditActivity.class);
+        intent.putExtra(RevealAnimation.EXTRA_CIRCULAR_REVEAL_X, revealX);
+        intent.putExtra(RevealAnimation.EXTRA_CIRCULAR_REVEAL_Y, revealY);
+        intent.putExtra("fromCreation", false);
+        intent.putExtra("myNoteClass", note);
+
+        //just start the activity as an shared transition, but set the options bundle to null
+        ActivityCompat.startActivity(this, intent, null);
+
+        //to prevent strange behaviours override the pending transitions
+        overridePendingTransition(0, 0);
+
+//        startActivity(new Intent(mContext, NoteEditActivity.class).putExtra("fromCreation", false)
+//                .putExtra("myNoteClass", note));
     }
 }

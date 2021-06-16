@@ -55,7 +55,7 @@ public class NoteListAdapter extends RecyclerView.Adapter<NoteListAdapter.ViewHo
             super(mainNoteListItemBinding.getRoot());
             this.mainNoteListItemBinding = mainNoteListItemBinding;
 
-            this.mainNoteListItemBinding.getRoot().setOnClickListener(v -> mainNoteClickListener.onMainNoteClick(noteArrayList.get(getAdapterPosition())));
+            this.mainNoteListItemBinding.getRoot().setOnClickListener(v -> mainNoteClickListener.onMainNoteClick(v, noteArrayList.get(getAdapterPosition())));
         }
     }
 }
