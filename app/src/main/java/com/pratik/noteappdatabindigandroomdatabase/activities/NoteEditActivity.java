@@ -57,7 +57,9 @@ public class NoteEditActivity extends BaseActivity {
         activityNoteEditBinding.imgBack.setOnClickListener(v -> onBackPressed());
 
         activityNoteEditBinding.txtSave.setOnClickListener(v -> {
-            noteModel = new Note();
+            if (fromCreation) {
+                noteModel = new Note();
+            }
             noteModel.setTitle(activityNoteEditBinding.etTitle.getText().toString());
             noteModel.setNote(activityNoteEditBinding.etNote.getText().toString());
 
@@ -65,7 +67,6 @@ public class NoteEditActivity extends BaseActivity {
                 noteRepository.insertNote(noteModel);
                 Toast.makeText(NoteEditActivity.this, "Note saved successfully", Toast.LENGTH_SHORT).show();
             } else {
-                // FIXME: 10-06-2021 Update not working
                 noteRepository.updateNote(noteModel);
                 Toast.makeText(NoteEditActivity.this, "Note updated successfully", Toast.LENGTH_SHORT).show();
             }

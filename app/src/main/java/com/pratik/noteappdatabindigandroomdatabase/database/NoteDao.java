@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.pratik.noteappdatabindigandroomdatabase.models.Note;
 import com.pratik.noteappdatabindigandroomdatabase.utils.Constant;
@@ -17,11 +19,14 @@ public interface NoteDao {
     @Query("SELECT * FROM " + Constant.TABLE_NAME)
     LiveData<List<Note>> getNoteList();
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertNote(Note note);
 
-    @Query("UPDATE notes SET note=:newNoteString WHERE id = :noteId")
-    void updateNote(String newNoteString,int noteId);
+//    @Query("UPDATE notes SET note=:newNoteString WHERE id = :noteId")
+//    void updateNote(String newNoteString,int noteId);
+
+    @Update
+    void updateNote(Note note);
 
     @Delete
     void deleteNote(Note note);

@@ -2,6 +2,7 @@ package com.pratik.noteappdatabindigandroomdatabase.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
         super.onCreate(savedInstanceState);
 
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
     }
 
     @Override
@@ -76,7 +78,6 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
 
 
     @Override
-
     public void onMainNoteClick(Note note) {
         startActivity(new Intent(mContext, NoteEditActivity.class).putExtra("fromCreation", false).putExtra("myNoteClass", note));
     }
