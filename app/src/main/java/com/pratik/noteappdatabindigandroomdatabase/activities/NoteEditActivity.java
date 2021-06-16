@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.databinding.DataBindingUtil;
 
 import com.pratik.noteappdatabindigandroomdatabase.R;
+import com.pratik.noteappdatabindigandroomdatabase.customview.RevealAnimation;
 import com.pratik.noteappdatabindigandroomdatabase.databinding.ActivityNoteEditBinding;
 import com.pratik.noteappdatabindigandroomdatabase.models.Note;
 
@@ -19,6 +20,9 @@ public class NoteEditActivity extends BaseActivity {
     Note noteModel;
 
     boolean fromCreation;
+
+    //    Reveal Animation
+    RevealAnimation mRevealAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,8 @@ public class NoteEditActivity extends BaseActivity {
                 noteModel = (Note) extraBundle.getSerializable("myNoteClass");
             }
         }
+
+        mRevealAnimation = new RevealAnimation(activityNoteEditBinding.rootlayout, getIntent(), this);
 
         if (fromCreation) {
             activityNoteEditBinding.txtSave.setVisibility(View.VISIBLE);
@@ -119,4 +125,10 @@ public class NoteEditActivity extends BaseActivity {
         });
     }
 
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        mRevealAnimation.unRevealActivity();
+    }
 }

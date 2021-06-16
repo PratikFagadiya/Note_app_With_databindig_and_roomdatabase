@@ -7,6 +7,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.pratik.noteappdatabindigandroomdatabase.R;
 import com.pratik.noteappdatabindigandroomdatabase.adapters.NoteListAdapter;
+import com.pratik.noteappdatabindigandroomdatabase.customview.RevealAnimation;
 import com.pratik.noteappdatabindigandroomdatabase.databinding.ActivityMainBinding;
 import com.pratik.noteappdatabindigandroomdatabase.interfaces.MainNoteClickListener;
 import com.pratik.noteappdatabindigandroomdatabase.models.Note;
@@ -41,7 +43,24 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
     protected void onResume() {
         super.onResume();
 
-        activityMainBinding.btnAddNote.setOnClickListener(v -> startActivity(new Intent(mContext, NoteEditActivity.class).putExtra("fromCreation", true)));
+        activityMainBinding.btnAddNote.setOnClickListener(v -> {
+
+            //calculates the center of the View v you are passing
+            int revealX = (int) (v.getX() + v.getWidth() / 2);
+            int revealY = (int) (v.getY() + v.getHeight() / 2);
+
+            Intent intent = new Intent(mContext, NoteEditActivity.class);
+            intent.putExtra(RevealAnimation.EXTRA_CIRCULAR_REVEAL_X, revealX);
+            intent.putExtra(RevealAnimation.EXTRA_CIRCULAR_REVEAL_Y, revealY);
+            intent.putExtra("fromCreation", true);
+
+            //just start the activity as an shared transition, but set the options bundle to null
+            ActivityCompat.startActivity(this, intent, null);
+
+            //to prevent strange behaviours override the pending transitions
+            overridePendingTransition(0, 0);
+
+        });
 
         noteListAdapter = new NoteListAdapter(mContext, this);
         activityMainBinding.rvNoteList.setLayoutManager(new LinearLayoutManager(mContext));
