@@ -6,32 +6,51 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
         android:background="@color/bgColor"
         tools:context=".activities.MainActivity">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/txtNotes"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:fontFamily="@font/poppins_medium"
             android:text="Notes"
             android:textColor="@color/white"
             android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="@id/imgSearch"
+            app:layout_constraintBottom_toBottomOf="@id/layoutSearch"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@id/imgSearch" />
+            app:layout_constraintTop_toTopOf="@id/layoutSearch" />
 
-        <ImageView
-            android:id="@+id/imgSearch"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/layoutSearch"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/rounded_button_bg"
-            android:padding="13dp"
-            android:src="@drawable/ic_search"
+            android:gravity="end"
+            android:orientation="horizontal"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/etSearchQuery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/imgSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_button_bg"
+                android:padding="13dp"
+                android:src="@drawable/ic_search" />
+
+        </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/btnAddNote"
@@ -50,9 +69,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
-            tools:listitem="@layout/main_note_list_item"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imgSearch" />
+            app:layout_constraintTop_toBottomOf="@id/layoutSearch"
+            tools:listitem="@layout/main_note_list_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

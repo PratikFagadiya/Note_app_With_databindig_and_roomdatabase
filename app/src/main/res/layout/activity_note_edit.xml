@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rootlayout"
         android:animateLayoutChanges="true"
         android:background="@color/bgColor">
 

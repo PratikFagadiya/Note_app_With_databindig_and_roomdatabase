@@ -29,7 +29,6 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
     ActivityMainBinding activityMainBinding;
 
     NoteListAdapter noteListAdapter;
-
     ArrayList<Note> noteArrayList = new ArrayList<>();
 
     @Override
@@ -86,10 +85,16 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
             overridePendingTransition(0, 0);
 
         });
+
+        activityMainBinding.imgSearch.setOnClickListener(v -> {
+            activityMainBinding.txtNotes.setVisibility(View.GONE);
+            activityMainBinding.imgSearch.setVisibility(View.GONE);
+            activityMainBinding.etSearchQuery.setVisibility(View.VISIBLE);
+        });
     }
 
     @Override
-    public void onMainNoteClick(View itemView,Note note) {
+    public void onMainNoteClick(View itemView, Note note) {
         //calculates the center of the View v you are passing
         int revealX = (int) (itemView.getX() + itemView.getWidth() / 2);
         int revealY = (int) (itemView.getY() + itemView.getHeight() / 2);

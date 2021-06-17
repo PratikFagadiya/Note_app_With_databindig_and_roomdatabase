@@ -125,10 +125,8 @@ public class NoteEditActivity extends BaseActivity {
         });
     }
 
-
     @Override
     public void onBackPressed() {
-//        super.onBackPressed();
         mRevealAnimation.unRevealActivity();
     }
 }
