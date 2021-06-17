@@ -16,9 +16,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:fontFamily="@font/poppins_medium"
-            android:text="Notes"
+            android:text="@string/notes"
             android:textColor="@color/white"
             android:textSize="30sp"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@id/layoutSearch"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@id/layoutSearch" />
@@ -28,7 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
             android:gravity="end"
             android:orientation="horizontal"
             app:layout_constraintRight_toRightOf="parent"
@@ -38,9 +40,14 @@
                 android:id="@+id/etSearchQuery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/rounded_button_bg"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:visibility="gone" />
+                android:hint="@string/search_note"
+                android:padding="15dp"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                tools:ignore="Autofill,LabelFor,TextFields" />
 
             <ImageView
                 android:id="@+id/imgSearch"
@@ -48,7 +55,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_button_bg"
                 android:padding="13dp"
-                android:src="@drawable/ic_search" />
+                android:src="@drawable/ic_search"
+                tools:ignore="ContentDescription" />
 
         </LinearLayout>
 
@@ -58,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:gravity="center"
-            android:text="New Note"
+            android:text="@string/new_note"
             app:icon="@drawable/ic_baseline_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"

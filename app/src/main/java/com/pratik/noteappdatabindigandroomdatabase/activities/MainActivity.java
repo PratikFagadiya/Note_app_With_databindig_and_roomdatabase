@@ -2,9 +2,9 @@ package com.pratik.noteappdatabindigandroomdatabase.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +23,7 @@ import com.pratik.noteappdatabindigandroomdatabase.models.Note;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class MainActivity extends BaseActivity implements MainNoteClickListener {
 
@@ -91,6 +92,38 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
             activityMainBinding.imgSearch.setVisibility(View.GONE);
             activityMainBinding.etSearchQuery.setVisibility(View.VISIBLE);
         });
+
+        activityMainBinding.etSearchQuery.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                searchFilter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+    }
+
+    void searchFilter(String text) {
+        ArrayList<Note> tempArrayList = new ArrayList<>();
+        for (Note note : noteArrayList) {
+            //or use .equal(text) with you want equal match
+            //use .toLowerCase() for better matches
+
+            if (note.getTitle().contains(text) || note.getNote().contains(text)) {
+                tempArrayList.add(note);
+            }
+        }
+        //update recyclerview
+        noteListAdapter.submitNoteList(tempArrayList);
     }
 
     @Override
@@ -110,8 +143,25 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
 
         //to prevent strange behaviours override the pending transitions
         overridePendingTransition(0, 0);
+    }
 
-//        startActivity(new Intent(mContext, NoteEditActivity.class).putExtra("fromCreation", false)
-//                .putExtra("myNoteClass", note));
+    @Override
+    public void onBackPressed() {
+
+        if (activityMainBinding.imgSearch.getVisibility() == View.VISIBLE) {
+            super.onBackPressed();
+            return;
+        }
+
+        if (activityMainBinding.etSearchQuery.getVisibility() == View.VISIBLE) {
+            activityMainBinding.etSearchQuery.setVisibility(View.GONE);
+        }
+        if (activityMainBinding.imgSearch.getVisibility() == View.GONE) {
+            activityMainBinding.imgSearch.setVisibility(View.VISIBLE);
+        }
+        if (activityMainBinding.txtNotes.getVisibility() == View.GONE) {
+            activityMainBinding.txtNotes.setVisibility(View.VISIBLE);
+        }
+
     }
 }
