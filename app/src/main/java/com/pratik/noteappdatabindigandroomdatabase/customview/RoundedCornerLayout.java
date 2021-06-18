@@ -23,20 +23,20 @@ public class RoundedCornerLayout extends ConstraintLayout {
 
     public RoundedCornerLayout(Context context) {
         super(context);
-        init(context, null, 0);
+        init(context);
     }
 
     public RoundedCornerLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context, attrs, 0);
+        init(context);
     }
 
     public RoundedCornerLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init(context, attrs, defStyle);
+        init(context);
     }
 
-    private void init(Context context, AttributeSet attrs, int defStyle) {
+    private void init(Context context) {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         cornerRadius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, CORNER_RADIUS, metrics);
 
@@ -50,13 +50,13 @@ public class RoundedCornerLayout extends ConstraintLayout {
 
     @Override
     public void draw(Canvas canvas) {
-        Bitmap offscreenBitmap = Bitmap.createBitmap(canvas.getWidth(), canvas.getHeight(), Bitmap.Config.ARGB_8888);
+        Bitmap offscreenBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
         Canvas offscreenCanvas = new Canvas(offscreenBitmap);
 
         super.draw(offscreenCanvas);
 
         if (maskBitmap == null) {
-            maskBitmap = createMask(canvas.getWidth(), canvas.getHeight());
+            maskBitmap = createMask(getWidth(), getHeight());
         }
 
         offscreenCanvas.drawBitmap(maskBitmap, 0f, 0f, maskPaint);

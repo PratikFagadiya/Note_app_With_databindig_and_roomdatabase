@@ -22,9 +22,6 @@ public interface NoteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertNote(Note note);
 
-//    @Query("UPDATE notes SET note=:newNoteString WHERE id = :noteId")
-//    void updateNote(String newNoteString,int noteId);
-
     @Update
     void updateNote(Note note);
 

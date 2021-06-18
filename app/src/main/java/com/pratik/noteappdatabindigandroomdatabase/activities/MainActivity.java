@@ -23,7 +23,6 @@ import com.pratik.noteappdatabindigandroomdatabase.models.Note;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class MainActivity extends BaseActivity implements MainNoteClickListener {
 
@@ -62,6 +61,7 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
                 noteRepository.deleteNote(noteArrayList.get(position));
                 noteArrayList.remove(position);
                 noteListAdapter.notifyItemRemoved(position);
+
                 Toast.makeText(mContext, "Note Deleted", Toast.LENGTH_SHORT).show();
             }
         };

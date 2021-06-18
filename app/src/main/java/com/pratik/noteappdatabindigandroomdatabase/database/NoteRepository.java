@@ -1,7 +1,6 @@
 package com.pratik.noteappdatabindigandroomdatabase.database;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -26,13 +25,6 @@ public class NoteRepository {
         NoteDatabase noteDatabase = NoteDatabase.getInstance(application);
         noteDao = noteDatabase.noteDao();
         mNotes = noteDao.getNoteList();
-//        Log.i("TAG_123", "NoteRepository: " + mNotes.getValue());
-
-//        for (int i = 0; i <mNotes.getValue(). ; i++) {
-//
-//        }
-
-//        Log.i("TAG_123", "NoteRepository: " + mNotes.observe().toString());
     }
 
     public LiveData<List<Note>> getAllNotes() {
@@ -44,7 +36,6 @@ public class NoteRepository {
     }
 
     public void updateNote(Note note) {
-//        new Thread(() -> noteDao.updateNote(note.getNote(), note.getId())).start();
         new Thread(() -> noteDao.updateNote(note)).start();
     }
 
