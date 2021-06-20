@@ -1,3 +1,5 @@
+![GitHub Cards Preview](https://github.com/PratikFagadiya/Note_app_With_databindig_and_roomdatabase/blob/master/screenshots/Banner.jpg?raw=true)
+
 # Note App 📝
 **Note App** is a simple note-taking 📝 Android application built to describe the use of Android development tools.  *Made with love ❤️ by [Pratik Fagadiya](https://github.com/PratikFagadiya)*
 
