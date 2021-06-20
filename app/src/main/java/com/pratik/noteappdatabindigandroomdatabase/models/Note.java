@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class Note implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    public int id;
 
     @ColumnInfo(name = Constant.TABLE_NOTE_TITLE)
     private String title;
@@ -20,14 +20,24 @@ public class Note implements Serializable {
     @ColumnInfo(name = Constant.TABLE_NOTE)
     private String note;
 
+    @ColumnInfo(name = Constant.TABLE_NOTE_COLOR)
+    private String colorCode;
+
     public Note() {
     }
 
-    public Note(int id, String title, String note) {
+    public Note(int id, String title, String note, String colorCode) {
         this.id = id;
         this.title = title;
         this.note = note;
+        this.colorCode = colorCode;
     }
+
+//    public Note(int id, String title, String note) {
+//        this.id = id;
+//        this.title = title;
+//        this.note = note;
+//    }
 
     public int getId() {
         return id;
@@ -51,5 +61,14 @@ public class Note implements Serializable {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+
+    public String getColorCode() {
+        return colorCode;
+    }
+
+    public void setColorCode(String colorCode) {
+        this.colorCode = colorCode;
     }
 }

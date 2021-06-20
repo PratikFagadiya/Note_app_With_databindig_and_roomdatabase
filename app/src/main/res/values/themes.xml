@@ -14,6 +14,8 @@
         <!-- Customize your theme here. -->
 
         <item name="android:statusBarColor">@color/bgColor</item>
+
+        <item name="android:navigationBarColor">@color/bgColor</item>
     </style>
 
     <style name="AppTheme.Transparent" parent="Theme.NoteAppDataBindigAndRoomDatabase">

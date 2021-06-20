@@ -15,6 +15,7 @@ import android.util.TypedValue;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class RoundedCornerLayout extends ConstraintLayout {
+
     private final static float CORNER_RADIUS = 10.0f;
 
     private Bitmap maskBitmap;

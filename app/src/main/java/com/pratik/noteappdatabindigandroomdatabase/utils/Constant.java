@@ -8,5 +8,5 @@ public class Constant {
 
     public static final String TABLE_NOTE_TITLE = "noteTitle";
     public static final String TABLE_NOTE = "note";
-
+    public static final String TABLE_NOTE_COLOR = "color";
 }

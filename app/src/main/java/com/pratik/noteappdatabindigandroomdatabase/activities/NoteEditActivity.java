@@ -13,6 +13,8 @@ import com.pratik.noteappdatabindigandroomdatabase.customview.RevealAnimation;
 import com.pratik.noteappdatabindigandroomdatabase.databinding.ActivityNoteEditBinding;
 import com.pratik.noteappdatabindigandroomdatabase.models.Note;
 
+import java.util.Random;
+
 public class NoteEditActivity extends BaseActivity {
 
     ActivityNoteEditBinding activityNoteEditBinding;
@@ -23,6 +25,8 @@ public class NoteEditActivity extends BaseActivity {
 
     //    Reveal Animation
     RevealAnimation mRevealAnimation;
+
+    String[] colorArray = {"FFAB91", "FFCC80", "E6EE9B", "80DEEA", "CF93D9", "F48FB1", "80CBC4"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +69,7 @@ public class NoteEditActivity extends BaseActivity {
         activityNoteEditBinding.txtSave.setOnClickListener(v -> {
             if (fromCreation) {
                 noteModel = new Note();
+                noteModel.setColorCode(colorArray[new Random().nextInt(colorArray.length)]);
             }
             noteModel.setTitle(activityNoteEditBinding.etTitle.getText().toString());
             noteModel.setNote(activityNoteEditBinding.etNote.getText().toString());
@@ -77,7 +82,8 @@ public class NoteEditActivity extends BaseActivity {
                 Toast.makeText(NoteEditActivity.this, "Note updated successfully", Toast.LENGTH_SHORT).show();
             }
 
-            finish();
+            onBackPressed();
+//            finish();
         });
 
         activityNoteEditBinding.etTitle.addTextChangedListener(new TextWatcher() {
@@ -129,4 +135,10 @@ public class NoteEditActivity extends BaseActivity {
     public void onBackPressed() {
         mRevealAnimation.unRevealActivity();
     }
+
+//    @Override
+//    protected void onDestroy() {
+//        mRevealAnimation.unRevealActivity();
+//        super.onDestroy();
+//    }
 }

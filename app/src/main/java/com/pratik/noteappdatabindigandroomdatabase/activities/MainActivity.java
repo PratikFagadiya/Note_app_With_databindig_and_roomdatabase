@@ -43,7 +43,6 @@ public class MainActivity extends BaseActivity implements MainNoteClickListener 
 
         noteRepository.getAllNotes().observe(this, notes -> {
             noteArrayList.clear();
-            Collections.reverse(notes);
             noteArrayList.addAll(notes);
             noteListAdapter.submitNoteList(noteArrayList);
         });

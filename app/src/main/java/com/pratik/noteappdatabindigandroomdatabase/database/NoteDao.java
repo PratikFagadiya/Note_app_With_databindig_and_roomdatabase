@@ -16,7 +16,10 @@ import java.util.List;
 @Dao
 public interface NoteDao {
 
-    @Query("SELECT * FROM " + Constant.TABLE_NAME)
+//    ""+Todo.COL_YOUR_PRIMARY_KEY" "
+
+//    @Query("SELECT * FROM " + Constant.TABLE_NAME + " ORDER BY " + Constant.TABLE_NOTE + +" DESC")
+    @Query("SELECT *  FROM " + Constant.TABLE_NAME + " ORDER BY id DESC")
     LiveData<List<Note>> getNoteList();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

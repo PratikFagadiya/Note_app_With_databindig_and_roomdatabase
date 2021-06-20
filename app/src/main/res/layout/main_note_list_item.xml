@@ -6,44 +6,64 @@
         <variable
             name="note"
             type="com.pratik.noteappdatabindigandroomdatabase.models.Note" />
+
+        <import type="android.graphics.Color" />
+
     </data>
 
-    <com.pratik.noteappdatabindigandroomdatabase.customview.RoundedCornerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
-        android:background="#FFCC80"
+        android:layout_marginBottom="5dp"
+        app:cardElevation="0dp"
         android:paddingStart="10dp"
         android:paddingTop="10dp"
+        app:cardBackgroundColor="@{Color.parseColor(`#`+note.colorCode)}"
+        app:cardCornerRadius="9dp"
+        app:cardMaxElevation="0dp"
+        app:cardPreventCornerOverlap="false"
+        tools:cardBackgroundColor="#FFAB91"
         tools:ignore="RtlSymmetry">
 
-        <TextView
-            android:id="@+id/itemTxtTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@{note.title}"
-            android:textColor="@color/black"
-            android:textSize="19sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Note Title" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@{note.note}"
-            android:textColor="@color/black"
-            android:textSize="17sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/itemTxtTitle"
-            tools:text="My Note " />
+            <TextView
+                android:id="@+id/itemTxtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@{note.title}"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Note Title" />
 
-    </com.pratik.noteappdatabindigandroomdatabase.customview.RoundedCornerLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_regular"
+                android:maxLines="2"
+                android:text="@{note.note}"
+                android:textColor="@color/black2"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/itemTxtTitle"
+                tools:text="My Note \nMy Developer " />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 </layout>
