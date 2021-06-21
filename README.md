@@ -4,6 +4,7 @@
 **Note App** is a simple note-taking 📝 Android application built to describe the use of Android development tools.  *Made with love ❤️ by [Pratik Fagadiya](https://github.com/PratikFagadiya)*
 
 ## Features 🚀
+- Light weight
 - Material design
 - No permissions required
 - No internet connection required
