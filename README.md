@@ -15,7 +15,7 @@
 - [Java](https://www.java.com/en/) - Java has platform independent feature so it is used for android development.
 - [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design, testable, and maintainable apps.
   - [Room](https://developer.android.com/topic/libraries/architecture/room) - SQLite object mapping library.
-  - [DataBinding](https://developer.android.com/topic/libraries/data-binding) - Help you to bind UI components in your layouts to data sources in your app using a declarative format
+  - [DataBinding](https://developer.android.com/topic/libraries/data-binding) - Help you to bind UI components in your layouts to data sources in your app using a declarative format.
 - [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android.
 
 ## Credits 🤗
