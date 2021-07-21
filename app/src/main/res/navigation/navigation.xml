@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/noteListFragment2">
+    <fragment
+        android:id="@+id/noteListFragment2"
+        android:name="com.pratik.noteappdatabindigandroomdatabase.ui.fragments.NoteListFragment"
+        android:label="fragment_note_list"
+        tools:layout="@layout/fragment_note_list" >
+        <action
+            android:id="@+id/action_noteListFragment2_to_noteEditFragment2"
+            app:destination="@id/noteEditFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteEditFragment2"
+        android:name="com.pratik.noteappdatabindigandroomdatabase.ui.fragments.NoteEditFragment"
+        android:label="fragment_note_edit"
+        tools:layout="@layout/fragment_note_edit" />
+</navigation>
