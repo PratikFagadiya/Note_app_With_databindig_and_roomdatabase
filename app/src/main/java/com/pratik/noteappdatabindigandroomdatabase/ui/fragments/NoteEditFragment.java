@@ -37,5 +37,6 @@ public class NoteEditFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         fragmentNoteEditBinding.imgBack.setOnClickListener(v -> NavHostFragment.findNavController(NoteEditFragment.this).navigateUp());
+
     }
 }
