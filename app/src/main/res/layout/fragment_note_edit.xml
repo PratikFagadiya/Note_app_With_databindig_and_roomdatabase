@@ -1,14 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragments.NoteEditFragment">
+<layout>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:animateLayoutChanges="true"
+        android:background="@color/bgColor"
+        tools:context=".ui.fragments.NoteEditFragment">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_button_bg"
+            android:padding="13dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtSave"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/rounded_button_bg"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingLeft="25dp"
+            android:paddingTop="9dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="9dp"
+            android:text="Save"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:visibility="visible"
+            app:layout_constraintRight_toLeftOf="@id/imgEdit"
+            app:layout_constraintTop_toTopOf="@id/imgBack" />
+
+        <ImageView
+            android:id="@+id/imgEdit"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/rounded_button_bg"
+            android:padding="12dp"
+            android:src="@drawable/ic_baseline_edit_24"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/imgBack"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imgBack" />
+
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:editable="true"
+            android:focusable="true"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="@string/title"
+            android:letterSpacing="0.1"
+            android:textColor="@color/white"
+            android:textColorHint="#929292"
+            android:textSize="25sp"
+            app:layout_constraintLeft_toLeftOf="@id/imgBack"
+            app:layout_constraintTop_toBottomOf="@id/imgBack" />
+
+        <EditText
+            android:id="@+id/etNote"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@null"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/type_something"
+            android:letterSpacing="0.08"
+            android:textColor="@color/white"
+            android:textColorHint="#929292"
+            app:layout_constraintLeft_toLeftOf="@id/imgBack"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
